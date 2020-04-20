@@ -54,6 +54,18 @@ void setup()
   digitalWrite(eastPedGreen, HIGH);
 }
 
+void blinkYellowLight(int yellowLED)
+{
+      for ( int i = 0; i < 5; i++) // blink yellow light
+      {
+        digitalWrite(yellowLED, LOW);
+        delay(yellowBlinkTime);
+        digitalWrite(yellowLED, HIGH);
+        delay(yellowBlinkTime);
+      }
+}
+
+
 void loop()
 {
   if ( digitalRead(westButton) == HIGH) //request west>east traffic flow
@@ -69,6 +81,10 @@ void loop()
       digitalWrite(eastYellow, LOW);
       digitalWrite(eastRed, HIGH);
       delay(changeDelay);
+
+  blinkYellowLight(westYellow);
+  
+    /*
       for ( int i = 0; i < 5; i++) //blink yellow light
       {
         digitalWrite(westYellow, LOW);
@@ -76,6 +92,8 @@ void loop()
         digitalWrite(westYellow, HIGH);
         delay(yellowBlinkTime);
       }
+    */
+    
       digitalWrite(westYellow, LOW);
       digitalWrite(westRed, LOW); // change west - facing lights from red to green
       digitalWrite(westGreen, HIGH);
@@ -98,6 +116,9 @@ void loop()
       digitalWrite(westYellow, LOW);
       digitalWrite(westRed, HIGH);
       delay(changeDelay);
+    
+    blinkYellowLight(eastYellow);  
+  /*    
       for ( int i = 0; i < 5; i++) // blink yellow light
       {
         digitalWrite(eastYellow, LOW);
@@ -105,6 +126,7 @@ void loop()
         digitalWrite(eastYellow, HIGH);
         delay(yellowBlinkTime);
       }
+     */
       digitalWrite(eastYellow, LOW);
       digitalWrite(eastRed, LOW); // change east-facing lights from red to green
       digitalWrite(eastGreen, HIGH);
